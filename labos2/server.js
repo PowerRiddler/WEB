@@ -21,7 +21,7 @@ server.use('/getCategories', indexRouter);
 server.use('/cart', cartRouter);
 
 server.listen(port, ()=> {
-  console.log(`Store has oppend on port: ${port}`);
+  console.log(`Store has oppend on port: ${port} and doesn't care.`);
 })
 
 module.exports = server
