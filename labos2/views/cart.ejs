@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+		<meta charset="UTF-8">
+		<title>Cart</title>
+		<link rel="stylesheet" type="text/css" href = "../styles/mainCart.css"> 
+	</head>
+    <body>
+        <div class="grid-container">
+            <%- include(`partials/header`); %>
+            <div class = "cart">
+                <h1>Košarica</h1>
+                <div class = "cartOverview">
+                    <table class="tableOfItems" id = "table">
+                        <thead>
+                            <tr>
+                                <th id = "name">NAZIV PROIZVODA</th>
+                                <th id = "quantity">KOLIČINA</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- <script src = "../javascripts/cart.js"></script> -->
+    </body>
+</html>

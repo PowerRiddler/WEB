@@ -1,0 +1,482 @@
+{
+    "website": "Hrana",
+    "categories": [
+      {
+        "name": "Sve",
+        "image": "webshop2.jpg",
+        "id" : 0,
+        "products": [
+          {
+            "name": "Avokado",
+            "image": "avocado.png"
+          },
+          {
+            "name": "Banana",
+            "image": "banana.png"
+          },
+          {
+            "name": "Limun",
+            "image": "lemon.png"
+          },
+          {
+            "name": "Ananas",
+            "image": "ananas.png"
+          },
+          {
+            "name": "Šljiva",
+            "image": "plum.png"
+          },
+          {
+            "name": "Paprika",
+            "image": "paprika.png"
+          },
+          {
+            "name": "Rajčica",
+            "image": "tomato.png"
+          },
+          {
+            "name": "Krumpir",
+            "image": "potato.png"
+          },
+          {
+            "name": "Cvjetača",
+            "image": "cauliflower.png"
+          },
+          {
+            "name": "Peršin",
+            "image": "parsley.png"
+          },
+          {
+            "name": "Cinek Grill Pile",
+            "image": "grillChicken.png"
+          },
+          {
+            "name": "Cinek Pileći batak",
+            "image": "chickenDrumstick.png"
+          },
+          {
+            "name": "KIP Svinjski file",
+            "image": "porkSteak.png"
+          },
+          {
+            "name": "KIP Čevapčići 810 grama",
+            "image": "cevapi.png"
+          },
+          {
+            "name": "KIP Gurmanska kobasica 600 grama",
+            "image": "sosig.png"
+          },
+          {
+            "name": "Tuna",
+            "image": "tuna.png"
+          },
+          {
+            "name": "Losos",
+            "image": "salmon.png"
+          },
+          {
+            "name": "Lignja",
+            "image": "squid.png"
+          },
+          {
+            "name": "Hobotnica očišćena",
+            "image": "octopus.png"
+          },
+          {
+            "name": "Pastrva",
+            "image": "trout.png"
+          },
+          {
+            "name": "Breg Trajno mlijeko 2,8% m.m. 0,5 l",
+            "image": "bregMilk.png"
+          },
+          {
+            "name": "Kutak sviježe mlijeko 3,2% m. m. 1 l",
+            "image": "kutakMilk.png"
+          },
+          {
+            "name": "Napitak od badema 1 l",
+            "image": "almondMilk.png"
+          },
+          {
+            "name": "Čokolando mlijeko",
+            "image": "chocoMilk.png"
+          },
+          {
+            "name": "Napitak od soje",
+            "image": "soyMilk.png"
+          },
+          {
+            "name": "Klus Vrhnje za kuhanje 20% m.m. 500 ml",
+            "image": "klusCream.png"
+          },
+          {
+            "name": "Breg Kiselo vrhnje 25% m.m. 900 grama",
+            "image": "bregSourCream.png"
+          },
+          {
+            "name": "Breg Mileram 22% m.m. 400 grama",
+            "image": "bregMileram.png"
+          },
+          {
+            "name": "Atla Prirpavak za šlag 500 ml",
+            "image": "atla.png"
+          },
+          {
+            "name": "Sporo & Fuj Šlag pjena 242 ml",
+            "image": "SnYCream.png"
+          },
+          {
+            "name": "Def Svježi krem sir 100 grama",
+            "image": "def.png"
+          },
+          {
+            "name": "Marko 500 grama",
+            "image": "marko.png"
+          },
+          {
+            "name": "Sid Maslac 250 grama",
+            "image": "sidButter.png"
+          },
+          {
+            "name": "Enka Topljeni Sir za mazanje pikant 150 grama",
+            "image": "enka.png"
+          },
+          {
+            "name": "Mliječni namaz 70 grama",
+            "image": "mNamaz.png"
+          },
+          {
+            "name": "Grašak 400 grama",
+            "image": "frozenPeas.png"
+          },
+          {
+            "name": "Zagorski štrukli 600 grama",
+            "image": "strukli.png"
+          },
+          {
+            "name": "Pizza 500 grama",
+            "image": "pizza.png"
+          },
+          {
+            "name": "Sladoled 400 grama",
+            "image": "icecream.png"
+          },
+          {
+            "name": "Mahuna žuta 400 grama",
+            "image": "pod.png"
+          },
+          {
+            "name": "Kukuruzni miješani 400 grama",
+            "image": "cornBread.png"
+          },
+          {
+            "name": "Baguette 110 grama",
+            "image": "baguette.png"
+          },
+          {
+            "name": "Hambi pecivo",
+            "image": "borgar.png"
+          },
+          {
+            "name": "Krafna marmelada",
+            "image": "donut.png"
+          },
+          {
+            "name": "Croissant",
+            "image": "croissant.png"
+          },
+          {
+            "name": "Ana prirodna voda 1,5 l",
+            "image": "ana.png"
+          },
+          {
+            "name": "Prirodni sok od naranče",
+            "image": "orangeJuice.png"
+          },
+          {
+            "name": "Prirodni sok od jabuke",
+            "image": "appleJuice.png"
+          },
+          {
+            "name": "ColaBola",
+            "image": "colaBola.png"
+          },
+          {
+            "name": "Pivo",
+            "image": "beer.png"
+          }
+        ]
+      },
+      {
+        "name": "Voće",
+        "image": "fruits.png",
+        "id" : 1,
+        "products": [
+          {
+            "name": "Avokado",
+            "image": "avocado.png"
+          },
+          {
+            "name": "Banana",
+            "image": "banana.png"
+          },
+          {
+            "name": "Limun",
+            "image": "lemon.png"
+          },
+          {
+            "name": "Ananas",
+            "image": "ananas.png"
+          },
+          {
+            "name": "Šljiva",
+            "image": "plum.png"
+          }
+        ]
+      },
+      {
+        "name": "Povrće",
+        "image": "vegetables.png",
+        "id" : 2,
+        "products": [
+          {
+            "name": "Paprika",
+            "image": "paprika.png"
+          },
+          {
+            "name": "Rajčica",
+            "image": "tomato.png"
+          },
+          {
+            "name": "Krumpir",
+            "image": "potato.png"
+          },
+          {
+            "name": "Cvjetača",
+            "image": "cauliflower.png"
+          },
+          {
+            "name": "Peršin",
+            "image": "parsley.png"
+          }
+        ]
+      },
+      {
+        "name": "Meso",
+        "image": "meat.png",
+        "id" : 3,
+        "products": [
+          {
+            "name": "Cinek Grill Pile",
+            "image": "grillChicken.png"
+          },
+          {
+            "name": "Cinek Pileći batak",
+            "image": "chickenDrumstick.png"
+          },
+          {
+            "name": "KIP Svinjski file",
+            "image": "porkSteak.png"
+          },
+          {
+            "name": "KIP Čevapčići 810 grama",
+            "image": "cevapi.png"
+          },
+          {
+            "name": "KIP Gurmanska kobasica 600 grama",
+            "image": "sosig.png"
+          }
+        ]
+      },
+      {
+        "name": "Riba",
+        "image": "fish.png",
+        "id" : 4,
+        "products": [
+          {
+            "name": "Tuna",
+            "image": "tuna.png"
+          },
+          {
+            "name": "Losos",
+            "image": "salmon.png"
+          },
+          {
+            "name": "Lignja",
+            "image": "squid.png"
+          },
+          {
+            "name": "Hobotnica očišćena",
+            "image": "octopus.png"
+          },
+          {
+            "name": "Pastrva",
+            "image": "trout.png"
+          }
+        ]
+      },
+      {
+        "name": "Mlijeko",
+        "image": "dairy.png",
+        "id" : 5,
+        "products": [
+          {
+            "name": "Breg Trajno mlijeko 2,8% m.m. 0,5 l",
+            "image": "bregMilk.png"
+          },
+          {
+            "name": "Kutak sviježe mlijeko 3,2% m. m. 1 l",
+            "image": "kutakMilk.png"
+          },
+          {
+            "name": "Napitak od badema 1 l",
+            "image": "almondMilk.png"
+          },
+          {
+            "name": "Čokolando mlijeko",
+            "image": "chocoMilk.png"
+          },
+          {
+            "name": "Napitak od soje",
+            "image": "soyMilk.png"
+          }
+        ]
+      },
+      {
+        "name": "Vrhnje",
+        "image": "dairy.png",
+        "id" : 6,
+        "products": [
+          {
+            "name": "Klus Vrhnje za kuhanje 20% m.m. 500 ml",
+            "image": "klusCream.png"
+          },
+          {
+            "name": "Breg Kiselo vrhnje 25% m.m. 900 grama",
+            "image": "bregSourCream.png"
+          },
+          {
+            "name": "Breg Mileram 22% m.m. 400 grama",
+            "image": "bregMileram.png"
+          },
+          {
+            "name": "Atla Prirpavak za šlag 500 ml",
+            "image": "atla.png"
+          },
+          {
+            "name": "Sporo & Fuj Šlag pjena 242 ml",
+            "image": "SnYCream.png"
+          }
+        ]
+      },
+      {
+        "name": "Namazi",
+        "image": "dairy.png",
+        "id" : 7,
+        "products": [
+          {
+            "name": "Def Svježi krem sir 100 grama",
+            "image": "def.png"
+          },
+          {
+            "name": "Marko 500 grama",
+            "image": "marko.png"
+          },
+          {
+            "name": "Sid Maslac 250 grama",
+            "image": "sidButter.png"
+          },
+          {
+            "name": "Enka Topljeni Sir za mazanje pikant 150 grama",
+            "image": "enka.png"
+          },
+          {
+            "name": "Mliječni namaz 70 grama",
+            "image": "mNamaz.png"
+          }
+        ]
+      },
+      {
+        "name": "Smrznuta hrana",
+        "image": "frozenFood.png",
+        "id" : 8,
+        "products": [
+          {
+            "name": "Grašak 400 grama",
+            "image": "frozenPeas.png"
+          },
+          {
+            "name": "Zagorski štrukli 600 grama",
+            "image": "strukli.png"
+          },
+          {
+            "name": "Pizza 500 grama",
+            "image": "pizza.png"
+          },
+          {
+            "name": "Sladoled 400 grama",
+            "image": "icecream.png"
+          },
+          {
+            "name": "Mahuna žuta 400 grama",
+            "image": "pod.png"
+          }
+        ]
+      },
+      {
+        "name": "Kruh/Slastice",
+        "image": "bread.png",
+        "id" : 9,
+        "products": [
+          {
+            "name": "Kukuruzni miješani 400 grama",
+            "image": "cornBread.png"
+          },
+          {
+            "name": "Baguette 110 grama",
+            "image": "baguette.png"
+          },
+          {
+            "name": "Hambi pecivo",
+            "image": "borgar.png"
+          },
+          {
+            "name": "Krafna marmelada",
+            "image": "donut.png"
+          },
+          {
+            "name": "Croissant",
+            "image": "croissant.png"
+          }
+        ]
+      },
+      {
+        "name": "Pića",
+        "image": "drinks.png",
+        "id" : 10,
+        "products": [
+          {
+            "name": "Ana prirodna voda 1,5 l",
+            "image": "ana.png"
+          },
+          {
+            "name": "Prirodni sok od naranče",
+            "image": "orangeJuice.png"
+          },
+          {
+            "name": "Prirodni sok od jabuke",
+            "image": "appleJuice.png"
+          },
+          {
+            "name": "ColaBola",
+            "image": "colaBola.png"
+          },
+          {
+            "name": "Pivo",
+            "image": "beer.png"
+          }
+        ]
+      }
+    ]
+  }
