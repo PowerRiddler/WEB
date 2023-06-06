@@ -56,19 +56,6 @@ fetch('../data/data.json')
         bannerImage.src = '../images/' + selectedCategory.image;
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
         var cData = JSON.parse(localStorage.getItem('cartData.json')) || { products: [] };
         selectedCategory.products.forEach(product => {
           const div = document.createElement('div');
@@ -95,20 +82,6 @@ fetch('../data/data.json')
           productQuantityBubble.className = 'quantityBubble';
           divImage.appendChild(productQuantityBubble);
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-          
           divImage.addEventListener('mouseover', function() {
               const cartImg = divImage.querySelector('.cart');
               cartImg.style.display = 'block';
