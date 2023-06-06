@@ -23,9 +23,23 @@
 				<img src="../../images/<%= currentCategory.image %>" alt="Store Front">
 			</div>
 			<div class="list">
+				<% if (currentCategory.prodList != null) { %>
+					<% currentCategory.prodList.forEach(product => { %>
+						<div class ="list__item">
+							<div id = "<%= product.name.replace(/[\s%.,&]/g, '') %>">
+								<img src = "../../images/<%= product.image %>" alt = "<%= product.name %>">
+								<p><%= product.name %></p>
+								<p><%= currentCategory.name %></p>
+								<a href="/cart/add">
+									<div class ="cart" src = "../../images/shoppingCart.png" alt = "Shopping Cart"></div>
+								</a>
+								<div class="quantityBubble"></div>
+							</div>
+						</div>
+					<% }); %>
+				<% } %>
 			</div>
 			<%- include(`partials/footer`); %>
 		</div>
-		<!--<script type = "text/javascript" src = "../../javascripts/getCategories.js"></script>-->
 	</body>
 </html>

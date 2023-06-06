@@ -324,6 +324,10 @@ li {
     cursor: pointer;
 }
 
+.list__item div:hover .cart{
+    display: block;
+}
+
 .list__item .quantityBubble {
     display: none;
     position: absolute;

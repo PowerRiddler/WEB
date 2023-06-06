@@ -22,6 +22,31 @@ function readJSONfile(pathToFile) {
     }
 }
 
+function readProducts(id, categoryAttributes){
+    let categoryInfo = {
+        name: "",
+        image: "",
+        prodList: "",
+    };
+    try{
+        categoryAttributes.forEach(attribute => {
+            if(attribute.id == id){
+                categoryInfo.name = attribute.name;
+                categoryInfo.image = attribute.image;
+                categoryInfo.prodList = attribute.products.map((prod) => {
+                    return{
+                        name: prod.name,
+                        image: prod.image,
+                    };
+                });
+            }
+        }); 
+        return categoryInfo;
+    }catch(error){
+        throw new Error('Internal server error');
+    }
+}
+
 /*GET root and redirect to home/getCategories*/
 router.get('/',function(req, res, next){
     res.redirect('/home/getCategories');
@@ -34,8 +59,7 @@ router.get('/home/getCategories', (req, res) => {
     };
     try{
         var categoryAttributes = readJSONfile(path.join(__dirname, '../data/data.json'));
-        /*console.log(categoryAttributes);*/
-        res.render('home', {categories: categoryAttributes, currentCategory: categoryBanner/*, products: null */});
+        res.render('home', {categories: categoryAttributes, currentCategory: categoryBanner });
     }catch(error) {
         return res.status(500).send('Internal server error');
     }
@@ -44,32 +68,10 @@ router.get('/home/getCategories', (req, res) => {
 
 router.get('/home/getProducts/:id([0-9]{1,2})', (req,res) => {
     let id = parseInt(req.params.id);
-    let categoryBanner = {
-        name: "",
-        image: "",
-    };
-    /*
-    let categoryProducts = {
-        name: "",
-        image: "",
-    };*/
     try{
         var categoryAttributes = readJSONfile(path.join(__dirname, '../data/data.json'));
-        categoryAttributes.forEach(attr => {
-            if(attr.id == id){
-                categoryBanner.name = attr.name;
-                categoryBanner.image = attr.image;
-                let categoryProducts = attr.products.map((prod) => {
-                    return {
-                        name: prod.name,
-                        image: prod.image,
-                    };
-                });
-                console.log(categoryProducts);
-                return categoryProducts;
-            }
-        });
-        res.render('home', {categories: categoryAttributes, currentCategory: categoryBanner/*, products: categoryProducts*/ });
+       var selectedCategory = readProducts(id, categoryAttributes);
+        res.render('home', {categories: categoryAttributes, currentCategory: selectedCategory });
     }catch(error) {
         return res.status(500).send('Internal server error');
     }
