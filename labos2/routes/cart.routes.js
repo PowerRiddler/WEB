@@ -3,7 +3,10 @@ var router = express.Router();
 
 /*GET cart main page*/
 router.get('/', (req, res) =>{
-    res.render('cart');
+    let shoppingCart = {
+        name: "Checkout",
+    };
+    res.render('cart', {currentCategory: shoppingCart} );
 });
 
 module.exports = router;

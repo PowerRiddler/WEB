@@ -93,6 +93,9 @@ li {
 	padding: 0;
 }
 
+.selected{
+    font-weight: bold;
+}
 
 .grid-container {
     display: grid;
@@ -253,6 +256,7 @@ li {
     align-items: center;
     border-style: groove;
     border-width: 5px;
+    height: fit-content;
 }
 
 
