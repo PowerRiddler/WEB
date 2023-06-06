@@ -22,7 +22,7 @@ router.get('/add/:id(\\d+-\\d+)', (req, res) => {
         const itemExistsById = cartData.products.find(item => item.id == prodId);
         /*const itemExistsByName = cartData.products.find(item => item.name == prodId);*/
         if(itemExistsById){
-            itemExists.quantity +=1;
+            itemExistsById.quantity +=1;
         }else{
             cartData.products.push({id: prodId, /*name: ,*/quantity: 1});
         }
