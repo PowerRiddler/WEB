@@ -37,6 +37,7 @@ function readProducts(id, categoryAttributes){
                     return{
                         name: prod.name,
                         image: prod.image,
+                        id: prod.id,
                     };
                 });
             }
@@ -70,7 +71,7 @@ router.get('/home/getProducts/:id([0-9]{1,2})', (req,res) => {
     let id = parseInt(req.params.id);
     try{
         var categoryAttributes = readJSONfile(path.join(__dirname, '../data/data.json'));
-       var selectedCategory = readProducts(id, categoryAttributes);
+        var selectedCategory = readProducts(id, categoryAttributes);
         res.render('home', {categories: categoryAttributes, currentCategory: selectedCategory });
     }catch(error) {
         return res.status(500).send('Internal server error');
