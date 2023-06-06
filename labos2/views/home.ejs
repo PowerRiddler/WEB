@@ -2,25 +2,30 @@
 <html>
 	<head>
 		<title>My Website</title>
-		<link rel="stylesheet" href="../styles/main.css">
+		<link rel="stylesheet" href="../../styles/main.css">
 	</head>
 	<body>
 		<div class="grid-container">
 			<%- include(`partials/header`); %>
 			<div class="navigation">
 				<ul>
+					<% categories.forEach(function(category) { %>
+						<li>
+							<a href = "/home/getProducts/<%= category.id %>"> <%= category.name %> </a>
+						</li>
+					<% }); %>
 				</ul>
 			</div>
 			<div class="storefront">
 				<div id = "welcomingMessage">
 					<h1>Dobar dan i dobrodošli</h1>
 				</div>
-				<img src="../images/webshop2.jpg" alt="Store Front">
+				<img src="../../images/webshop2.jpg" alt="Store Front">
 			</div>
 			<div class="list">
 			</div>
 			<%- include(`partials/footer`); %>
 		</div>
-		<script type = "text/javascript" src = "../javascripts/getCategories.js"></script>
+		<!-- <script type = "text/javascript" src = "../javascripts/getCategories.js"></script> -->
 	</body>
 </html>
