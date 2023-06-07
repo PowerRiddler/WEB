@@ -30,7 +30,7 @@
 								<img src = "../../images/<%= product.image %>" alt = "<%= product.name %>">
 								<p><%= product.name %></p>
 								<p><%= currentCategory.name %></p>
-								<a href="/cart/add/<%= product.id %>">
+								<a href="/home/getProducts/addToCart/<%= currentCategory.id %>&<%= product.id %>">
 									<div class ="cart" src = "../../images/shoppingCart.png" alt = "Shopping Cart"></div>
 								</a>
 								<div class="quantityBubble"></div>

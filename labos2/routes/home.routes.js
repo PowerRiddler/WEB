@@ -26,6 +26,7 @@ function readProducts(id, categoryAttributes){
     let categoryInfo = {
         name: "",
         image: "",
+        id: "",
         prodList: "",
     };
     try{
@@ -33,6 +34,7 @@ function readProducts(id, categoryAttributes){
             if(attribute.id == id){
                 categoryInfo.name = attribute.name;
                 categoryInfo.image = attribute.image;
+                categoryInfo.id = attribute.id;
                 categoryInfo.prodList = attribute.products.map((prod) => {
                     return{
                         name: prod.name,
@@ -77,5 +79,29 @@ router.get('/home/getProducts/:id([0-9]{1,2})', (req,res) => {
         return res.status(500).send('Internal server error');
     }
 })
+
+router.get('/home/getProducts/addToCart/:id(\\d+&\\d+-\\d+)', (req, res) => {
+    var categoryId = req.params.id.split('&')[0];
+    var prodId = req.params.id.split('&')[1];
+    var parseProdId = prodId.split('-')[0];
+    /*console.log(prodId);*/
+    fs.readFile(path.join(__dirname, '../data/cartData.json'), 'utf8', (err, data) => {
+        if (err) {res.status(500).send('Internal server error'); return;}
+
+        let cartData = JSON.parse(data);
+        const itemExistsById = cartData.products.find(item => item.id == prodId);
+        /*const itemExistsByName = cartData.products.find(item => item.name == prodId);*/
+        if(itemExistsById){
+            itemExistsById.quantity +=1;
+        }else{
+            cartData.products.push({id: prodId, /*name: ,*/quantity: 1});
+        }
+        fs.writeFile(path.join(__dirname, '../data/cartData.json'), JSON.stringify(cartData), 'utf8', err => {
+            if(err) {res.status(500).send('Internal server error'); return;}
+            console.log('Item with ID:',prodId + " added to cart");
+            res.redirect(`/home/getProducts/${(categoryId == 0) ?  0 : parseProdId}`);
+        });
+    });
+});
 
 module.exports = router;
