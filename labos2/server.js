@@ -27,7 +27,8 @@ server.use('/data', express.static('data'));
 
 server.use('/', indexRouter);
 server.use('/getCategories', indexRouter);
-server.use('/cart', cartRouter);
+server.use('/', cartRouter);
+server.use('/getAll', cartRouter);
 
 mainServer.listen(port, ()=> {
   console.log(`Store has oppend on port: ${port} and doesn't care.`);
