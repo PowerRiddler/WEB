@@ -11,7 +11,11 @@ const server = express();
 const mainServer = http.createServer(server);
 
 function onServerStart(){
-  fs.writeFile(path.join(__dirname, '/data/cartData.json'), '{\n"products": []\n}', 'utf8', err => {
+  const initialState = {
+    products: [],
+    totalItemCount: 0,
+  };
+  fs.writeFile(path.join(__dirname, '/data/cartData.json'), JSON.stringify(initialState), 'utf8', err => {
     if (err) {console.log(err); return;}
   });
 }

@@ -33,7 +33,9 @@
 								<a href="/home/getProducts/addToCart/<%= currentCategory.id %>&<%= product.id %>">
 									<div class ="cart" src = "../../images/shoppingCart.png" alt = "Shopping Cart"></div>
 								</a>
-								<div class="quantityBubble"></div>
+								<%if(product.quantity != 0 && product.quantity != null) { %>
+									<div class="quantityBubble"><%= product.quantity%></div>
+								<% } %>
 							</div>
 						</div>
 					<% }); %>

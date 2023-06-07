@@ -329,7 +329,7 @@ li {
 }
 
 .list__item .quantityBubble {
-    display: none;
+    display: block;
     position: absolute;
     bottom: 28%;
     left: 80%;
@@ -346,7 +346,7 @@ li {
 
 
 .totalQuantityBubble {
-    display: none;
+    display: block;
     position: absolute;
     bottom: 28%;
     left: 80%;

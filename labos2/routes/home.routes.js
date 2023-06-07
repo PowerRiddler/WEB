@@ -30,6 +30,8 @@ function readProducts(id, categoryAttributes){
         prodList: "",
     };
     try{
+        var cartData = fs.readFileSync(path.join(__dirname, '../data/cartData.json'), 'utf8');
+        var cartDataJson = JSON.parse(cartData);
         categoryAttributes.forEach(attribute => {
             if(attribute.id == id){
                 categoryInfo.name = attribute.name;
@@ -43,7 +45,12 @@ function readProducts(id, categoryAttributes){
                     };
                 });
             }
-        }); 
+        });
+        categoryInfo.prodList.forEach((product) => {
+            if (cartDataJson.products.find(id => id.id == product.id)){
+                product['quantity'] = cartDataJson.products.find(id => id.id == product.id).quantity;
+            }
+        });
         return categoryInfo;
     }catch(error){
         throw new Error('Internal server error');
@@ -62,7 +69,7 @@ router.get('/home/getCategories', (req, res) => {
     };
     try{
         var categoryAttributes = readJSONfile(path.join(__dirname, '../data/data.json'));
-        res.render('home', {categories: categoryAttributes, currentCategory: categoryBanner });
+        res.render('home', {categories: categoryAttributes, currentCategory: categoryBanner, itemQuantity: null });
     }catch(error) {
         return res.status(500).send('Internal server error');
     }
@@ -73,8 +80,10 @@ router.get('/home/getProducts/:id([0-9]{1,2})', (req,res) => {
     let id = parseInt(req.params.id);
     try{
         var categoryAttributes = readJSONfile(path.join(__dirname, '../data/data.json'));
+        var cartData = fs.readFileSync(path.join(__dirname, '../data/cartData.json'), 'utf8');
+        var noOfItemsInCart = JSON.parse(cartData);
         var selectedCategory = readProducts(id, categoryAttributes);
-        res.render('home', {categories: categoryAttributes, currentCategory: selectedCategory });
+        res.render('home', {categories: categoryAttributes, currentCategory: selectedCategory, itemQuantity: noOfItemsInCart.totalItemCount });
     }catch(error) {
         return res.status(500).send('Internal server error');
     }
@@ -84,18 +93,17 @@ router.get('/home/getProducts/addToCart/:id(\\d+&\\d+-\\d+)', (req, res) => {
     var categoryId = req.params.id.split('&')[0];
     var prodId = req.params.id.split('&')[1];
     var parseProdId = prodId.split('-')[0];
-    /*console.log(prodId);*/
     fs.readFile(path.join(__dirname, '../data/cartData.json'), 'utf8', (err, data) => {
         if (err) {res.status(500).send('Internal server error'); return;}
 
         let cartData = JSON.parse(data);
         const itemExistsById = cartData.products.find(item => item.id == prodId);
-        /*const itemExistsByName = cartData.products.find(item => item.name == prodId);*/
         if(itemExistsById){
-            itemExistsById.quantity +=1;
+            itemExistsById.quantity ++;
         }else{
-            cartData.products.push({id: prodId, /*name: ,*/quantity: 1});
+            cartData.products.push({id: prodId, quantity: 1});
         }
+        cartData.totalItemCount ++;
         fs.writeFile(path.join(__dirname, '../data/cartData.json'), JSON.stringify(cartData), 'utf8', err => {
             if(err) {res.status(500).send('Internal server error'); return;}
             console.log('Item with ID:',prodId + " added to cart");

@@ -8,7 +8,9 @@
             <a href = "/cart/getAll">
                 <img  src="../../images/shopingcart.png" alt="Shopping Cart">
             </a>
-            <div class = "totalQuantityBubble"></div>
+            <% if(itemQuantity != 0 && itemQuantity != null) { %>
+                <div class ="totalQuantityBubble"><%= itemQuantity %></div>
+            <% } %>
         </div>
         <div class = "searchIcon">
             <img src="../../images/search.png" alt="Search Icon">
