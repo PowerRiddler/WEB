@@ -51,7 +51,7 @@ server.use('/', cartRouter);
 server.use('/getAll', cartRouter);
 
 mainServer.listen(port, ()=> {
-  console.log(`Store has oppend on port: ${port} and doesn't care.`);
+  console.log(`Store has oppend on port: ${port}`);
   onServerStart();
 })
 

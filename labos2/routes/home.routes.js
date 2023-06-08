@@ -57,7 +57,6 @@ function readProducts(id, categoryAttributes, pathToFile){
     }
 }
 
-/*GET root and redirect to home/getCategories*/
 router.get('/',function(req, res, next){
     res.redirect('/home/getCategories');
 });
@@ -73,10 +72,8 @@ router.get('/home/getCategories', (req, res) => {
     };
 
     console.log("A user has visited the page! Session ID: ", req.sessionID);
-    if(fs.existsSync(path.join(__dirname, `../data/${req.sessionID}.json`))) {
-        console.log("File exists, won't rewrite it");
-    }else{
-        console.log("File doesn't exists, creating it");
+    if(fs.existsSync(path.join(__dirname, `../data/${req.sessionID}.json`))) {}
+    else{
         fs.writeFile(path.join(__dirname, `../data/${req.sessionID}.json`), JSON.stringify(initialState), 'utf8', (err) => {
             if(err) {console.log(err); return;}
         });
@@ -122,7 +119,6 @@ router.get('/home/getProducts/addToCart/:id(\\d+&\\d+-\\d+)', (req, res) => {
         cartData.totalItemCount ++;
         fs.writeFile(path.join(__dirname, `../data/${req.sessionID}.json`), JSON.stringify(cartData), 'utf8', err => {
             if(err) {res.status(500).send('Internal server error'); return;}
-            console.log('Item with ID:',prodId + " added to cart");
             res.redirect(`/home/getProducts/${(categoryId == 0) ?  0 : parseProdId}`);
         });
     });
