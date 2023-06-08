@@ -30,8 +30,9 @@ router.get('/cart/getAll', (req, res) => {
     let shoppingCart = {
         name: "Checkout",
     };
-    var productsAddedToCart = readCartData(path.join(__dirname, '../data/cartData.json'));
-    var cartData = fs.readFileSync(path.join(__dirname, '../data/cartData.json'), 'utf8');
+
+    var productsAddedToCart = readCartData(path.join(__dirname, `../data/${req.sessionID}.json`));
+    var cartData = fs.readFileSync(path.join(__dirname, `../data/${req.sessionID}.json`), 'utf8');
     var noOfItemsInCart = JSON.parse(cartData);
     console.log("itemQuantity: ", noOfItemsInCart.totalItemCount);
     res.render('cart', {currentCategory: shoppingCart, cartItems: productsAddedToCart, itemQuantity: noOfItemsInCart.totalItemCount });
@@ -39,12 +40,12 @@ router.get('/cart/getAll', (req, res) => {
 
 router.get('/cart/remove/:id(\\d+-\\d+)', (req, res) => {
     let itemId = req.params.id;
-    let data = fs.readFileSync(path.join(__dirname, '../data/cartData.json'), 'utf8');
+    let data = fs.readFileSync(path.join(__dirname, `../data/${req.sessionID}.json`), 'utf8');
     let cartDataJSON = JSON.parse(data);
     const removeOne = cartDataJSON.products.find(item => item.id == itemId);
     removeOne.quantity --;
     cartDataJSON.totalItemCount --;
-    fs.writeFile(path.join(__dirname, '../data/cartData.json'), JSON.stringify(cartDataJSON), 'utf8', err =>{
+    fs.writeFile(path.join(__dirname, `../data/${req.sessionID}.json`), JSON.stringify(cartDataJSON), 'utf8', err =>{
         if(err) {res.status(500).send('Internal server error'); return;}
         console.log("Removed 1 from item with ID:",itemId);
         res.redirect('/cart/getAll');
@@ -53,12 +54,12 @@ router.get('/cart/remove/:id(\\d+-\\d+)', (req, res) => {
 
 router.get('/cart/add/:id(\\d+-\\d+)', (req, res) => {
     let itemId = req.params.id;
-    let data = fs.readFileSync(path.join(__dirname, '../data/cartData.json'), 'utf8');
+    let data = fs.readFileSync(path.join(__dirname, `../data/${req.sessionID}.json`), 'utf8');
     let cartDataJSON = JSON.parse(data);
     const addOne = cartDataJSON.products.find(item => item.id == itemId);
     addOne.quantity ++;
     cartDataJSON.totalItemCount++;
-    fs.writeFile(path.join(__dirname, '../data/cartData.json'), JSON.stringify(cartDataJSON), 'utf8', err =>{
+    fs.writeFile(path.join(__dirname, `../data/${req.sessionID}.json`), JSON.stringify(cartDataJSON), 'utf8', err =>{
         if(err) {res.status(500).send('Internal server error'); return;}
         console.log("Added 1 to item with ID:",itemId);
         res.redirect('/cart/getAll');

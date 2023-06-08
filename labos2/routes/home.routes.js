@@ -22,7 +22,7 @@ function readJSONfile(pathToFile) {
     }
 }
 
-function readProducts(id, categoryAttributes){
+function readProducts(id, categoryAttributes, pathToFile){
     let categoryInfo = {
         name: "",
         image: "",
@@ -30,7 +30,7 @@ function readProducts(id, categoryAttributes){
         prodList: "",
     };
     try{
-        var cartData = fs.readFileSync(path.join(__dirname, '../data/cartData.json'), 'utf8');
+        var cartData = fs.readFileSync(path.join(__dirname, `../data/${pathToFile}.json`), 'utf8');
         var cartDataJson = JSON.parse(cartData);
         categoryAttributes.forEach(attribute => {
             if(attribute.id == id){
@@ -67,6 +67,21 @@ router.get('/home/getCategories', (req, res) => {
         name: "Odaberite kategoriju",
         image: "webshop2.jpg",
     };
+    const initialState = {
+        products: [],
+        totalItemCount: 0,
+    };
+
+    console.log("A user has visited the page! Session ID: ", req.sessionID);
+    if(fs.existsSync(path.join(__dirname, `../data/${req.sessionID}.json`))) {
+        console.log("File exists, won't rewrite it");
+    }else{
+        console.log("File doesn't exists, creating it");
+        fs.writeFile(path.join(__dirname, `../data/${req.sessionID}.json`), JSON.stringify(initialState), 'utf8', (err) => {
+            if(err) {console.log(err); return;}
+        });
+    }
+
     try{
         var categoryAttributes = readJSONfile(path.join(__dirname, '../data/data.json'));
         res.render('home', {categories: categoryAttributes, currentCategory: categoryBanner, itemQuantity: null });
@@ -80,9 +95,9 @@ router.get('/home/getProducts/:id([0-9]{1,2})', (req,res) => {
     let id = parseInt(req.params.id);
     try{
         var categoryAttributes = readJSONfile(path.join(__dirname, '../data/data.json'));
-        var cartData = fs.readFileSync(path.join(__dirname, '../data/cartData.json'), 'utf8');
+        var cartData = fs.readFileSync(path.join(__dirname, `../data/${req.sessionID}.json`), 'utf8');
         var noOfItemsInCart = JSON.parse(cartData);
-        var selectedCategory = readProducts(id, categoryAttributes);
+        var selectedCategory = readProducts(id, categoryAttributes, req.sessionID);
         res.render('home', {categories: categoryAttributes, currentCategory: selectedCategory, itemQuantity: noOfItemsInCart.totalItemCount });
     }catch(error) {
         return res.status(500).send('Internal server error');
@@ -93,7 +108,8 @@ router.get('/home/getProducts/addToCart/:id(\\d+&\\d+-\\d+)', (req, res) => {
     var categoryId = req.params.id.split('&')[0];
     var prodId = req.params.id.split('&')[1];
     var parseProdId = prodId.split('-')[0];
-    fs.readFile(path.join(__dirname, '../data/cartData.json'), 'utf8', (err, data) => {
+
+    fs.readFile(path.join(__dirname, `../data/${req.sessionID}.json`), 'utf8', (err, data) => {
         if (err) {res.status(500).send('Internal server error'); return;}
 
         let cartData = JSON.parse(data);
@@ -104,7 +120,7 @@ router.get('/home/getProducts/addToCart/:id(\\d+&\\d+-\\d+)', (req, res) => {
             cartData.products.push({id: prodId, quantity: 1});
         }
         cartData.totalItemCount ++;
-        fs.writeFile(path.join(__dirname, '../data/cartData.json'), JSON.stringify(cartData), 'utf8', err => {
+        fs.writeFile(path.join(__dirname, `../data/${req.sessionID}.json`), JSON.stringify(cartData), 'utf8', err => {
             if(err) {res.status(500).send('Internal server error'); return;}
             console.log('Item with ID:',prodId + " added to cart");
             res.redirect(`/home/getProducts/${(categoryId == 0) ?  0 : parseProdId}`);
